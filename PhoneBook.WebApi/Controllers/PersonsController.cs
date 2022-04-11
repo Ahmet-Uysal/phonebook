@@ -1,6 +1,9 @@
+using System.Collections.Generic;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PhoneBook.DataAccess.UnitofWork.Abstract;
 using PhoneBook.Entity.Concrete;
+using PhoneBook.Entity.DTO;
 
 namespace PhoneBook.WebApi.Controllers;
 
@@ -9,12 +12,13 @@ namespace PhoneBook.WebApi.Controllers;
 public class PersonController : ControllerBase
 {
     private readonly IUnitOfWork _UnitOfWork;
+    private readonly IMapper _mapper;
 
 
 
-
-    public PersonController(IUnitOfWork _unitOfWork)
+    public PersonController(IUnitOfWork _unitOfWork, IMapper mapper)
     {
+        _mapper = mapper;
         _UnitOfWork = _unitOfWork;
     }
 
@@ -56,7 +60,7 @@ public class PersonController : ControllerBase
     {
         try
         {
-            var list = await _UnitOfWork.PersonsRepository.GetAll();
+            var list = _mapper.Map<List<PersonsDTO>>(await _UnitOfWork.PersonsRepository.GetAll());
             return Ok(list);
         }
         catch (Exception ex)
