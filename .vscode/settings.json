@@ -1,0 +1,13 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "askForPassword": true,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "connectString": "Server=127.0.0.1;Port=5432;User Id=postgres;Password=postgres",
+            "name": "deneme"
+        }
+    ]
+}
