@@ -1,4 +1,5 @@
 using DeliveryBackend.DataAccess.UnitOfWork.Concrete;
+using MiddleWares;
 using PhoneBook.DataAccess.UnitofWork.Abstract;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseMiddleware<ExceptionHandler>();
 
 app.UseAuthorization();
 
