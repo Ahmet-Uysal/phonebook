@@ -1,5 +1,7 @@
 using PhoneBook.DataAccess.Abstract;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+
 namespace PhoneBook.DataAccess.Concrete
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
@@ -23,6 +25,8 @@ namespace PhoneBook.DataAccess.Concrete
 
         public async Task<IEnumerable<TEntity>> GetAll()
         {
+
+
             return _dbSet.ToList();
         }
 
