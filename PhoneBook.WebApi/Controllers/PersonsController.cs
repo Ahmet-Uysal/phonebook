@@ -24,12 +24,12 @@ public class PersonController : ControllerBase
 
     [HttpPost]
     [Route("[action]")]
-    public async Task<IActionResult> AddPerson([FromBody] Persons entity)
+    public async Task<IActionResult> AddPerson([FromBody] AddPerson entity)
     {
         try
         {
 
-            await _UnitOfWork.PersonsRepository.Add(entity);
+            await _UnitOfWork.PersonsRepository.Add(new Persons(entity));
             _UnitOfWork.Complate();
             return Ok();
         }
@@ -45,7 +45,7 @@ public class PersonController : ControllerBase
         try
         {
 
-            await _UnitOfWork.PersonsRepository.Remove(Id);
+            await _UnitOfWork.PersonsRepository.ChangePersonStatus(Id);
             _UnitOfWork.Complate();
             return Ok();
         }
@@ -61,6 +61,7 @@ public class PersonController : ControllerBase
         try
         {
             var list = _mapper.Map<List<PersonsDTO>>(await _UnitOfWork.PersonsRepository.GetAll());
+            list = list.Where(x => x.IsActive == 1).ToList();
             return Ok(list);
         }
         catch (Exception ex)
@@ -89,8 +90,10 @@ public class PersonController : ControllerBase
         try
         {
 
-            var list = await _UnitOfWork.PersonsRepository.GetAll();
-            return Ok(list);
+            var list = await _UnitOfWork.PersonsRepository.GetDetailedPersonList();
+            var mappedList = _mapper.Map<List<DetailedPersonInfoDTO>>(list);
+
+            return Ok(mappedList);
         }
         catch (Exception ex)
         {

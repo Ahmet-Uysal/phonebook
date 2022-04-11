@@ -7,5 +7,7 @@ public class PersonProfile : Profile
     public PersonProfile()
     {
         CreateMap<Persons, PersonsDTO>();
+        CreateMap<Persons, DetailedPersonInfoDTO>();
+        CreateMap<CommunicationInformations, CommunicationInformationsDTO>();
     }
 }

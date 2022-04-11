@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PhoneBook.DataAccess.UnitofWork.Abstract;
 using PhoneBook.Entity.Concrete;
+using PhoneBook.Entity.DTO;
 
 namespace PhoneBook.WebApi.Controllers;
 
@@ -20,14 +21,29 @@ public class CommunicationInformationsController : ControllerBase
 
     [HttpPost]
     [Route("[action]")]
-    public async Task<IActionResult> AddCommunicationInfo([FromBody] Persons entity)
+    public async Task<IActionResult> AddCommunicationInfo([FromBody] AddCommunicationInformations entity)
     {
         try
         {
 
-            await _UnitOfWork.PersonsRepository.Add(entity);
+            await _UnitOfWork.CommunityInformationRepository.Add(new CommunicationInformations(entity));
             _UnitOfWork.Complate();
             return Ok();
+        }
+        catch (Exception ex)
+        {
+            return BadRequest();
+        }
+    }
+    [HttpGet]
+    [Route("[action]")]
+    public async Task<IActionResult> GetAllInfo()
+    {
+        try
+        {
+
+            var list = await _UnitOfWork.CommunityInformationRepository.GetAll();
+            return Ok(list);
         }
         catch (Exception ex)
         {
@@ -41,7 +57,7 @@ public class CommunicationInformationsController : ControllerBase
         try
         {
 
-            await _UnitOfWork.PersonsRepository.Remove(Id);
+            await _UnitOfWork.CommunityInformationRepository.ChangeStatus(Id);
             _UnitOfWork.Complate();
             return Ok();
         }
