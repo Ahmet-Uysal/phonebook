@@ -13,92 +13,72 @@ public class PersonController : ControllerBase
 {
     private readonly IUnitOfWork _UnitOfWork;
     private readonly IMapper _mapper;
+    private readonly IHttpClientFactory _httpClientFactory;
 
 
 
-    public PersonController(IUnitOfWork _unitOfWork, IMapper mapper)
+    public PersonController(IUnitOfWork _unitOfWork, IMapper mapper, IHttpClientFactory httpClientFactory)
     {
         _mapper = mapper;
         _UnitOfWork = _unitOfWork;
+        _httpClientFactory = httpClientFactory;
     }
 
     [HttpPost]
     [Route("[action]")]
     public async Task<IActionResult> AddPerson([FromBody] AddPerson entity)
     {
-        try
-        {
 
-            await _UnitOfWork.PersonsRepository.Add(new Persons(entity));
-            _UnitOfWork.Complate();
-            return Ok();
-        }
-        catch (Exception ex)
-        {
-            return BadRequest();
-        }
+
+        await _UnitOfWork.PersonsRepository.Add(new Persons(entity));
+        _UnitOfWork.Complate();
+        return Ok();
+
     }
     [HttpDelete]
     [Route("[action]/{Id}")]
     public async Task<IActionResult> Remove(string Id)
     {
-        try
-        {
 
-            await _UnitOfWork.PersonsRepository.ChangePersonStatus(Id);
-            _UnitOfWork.Complate();
-            return Ok();
-        }
-        catch (Exception ex)
-        {
-            return BadRequest();
-        }
+
+        await _UnitOfWork.PersonsRepository.ChangePersonStatus(Id);
+        _UnitOfWork.Complate();
+        return Ok();
+
     }
     [HttpGet]
     [Route("[action]")]
     public async Task<IActionResult> GetAllPersons()
     {
-        try
-        {
-            var list = _mapper.Map<List<PersonsDTO>>(await _UnitOfWork.PersonsRepository.GetAll());
-            list = list.Where(x => x.IsActive == 1).ToList();
-            return Ok(list);
-        }
-        catch (Exception ex)
-        {
-            return BadRequest();
-        }
+
+        var list = _mapper.Map<List<PersonsDTO>>(await _UnitOfWork.PersonsRepository.GetAll());
+        list = list.Where(x => x.IsActive == 1).ToList();
+        return Ok(list);
+
     }
     [HttpGet]
     [Route("[action]")]
-    public async Task<IActionResult> GetAllPersonsGroupByLocation()
+    public async Task<IActionResult> GetReport()
     {
-        try
-        {
 
-            return Ok();
-        }
-        catch (Exception ex)
+        var httpClient = _httpClientFactory.CreateClient("Report");
+        var httpResponseMessage = await httpClient.GetAsync(
+            "report/CreateReports");
+
+        if (httpResponseMessage.IsSuccessStatusCode)
         {
-            return BadRequest();
+            using var contentStream = await httpResponseMessage.Content.ReadAsStreamAsync();
         }
+        return Ok();
+
     }
     [HttpGet]
     [Route("[action]")]
     public async Task<IActionResult> GetAllPersonsWithCommunicationsInfo()
     {
-        try
-        {
-
-            var list = await _UnitOfWork.PersonsRepository.GetDetailedPersonList();
-            var mappedList = _mapper.Map<List<DetailedPersonInfoDTO>>(list);
-
-            return Ok(mappedList);
-        }
-        catch (Exception ex)
-        {
-            return BadRequest();
-        }
+        var list = await _UnitOfWork.PersonsRepository.GetDetailedPersonList();
+        var mappedList = _mapper.Map<List<DetailedPersonInfoDTO>>(list);
+        return Ok(mappedList);
     }
 
 

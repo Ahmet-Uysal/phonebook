@@ -16,7 +16,9 @@ namespace MiddleWares
             catch (System.Exception ex)
             {
                 System.Console.WriteLine("Exception ==> " + ex.Message);
+                httpContext.Response.StatusCode = 400;
             }
+
         }
     }
 }

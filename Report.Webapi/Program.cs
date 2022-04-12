@@ -1,7 +1,3 @@
-using DeliveryBackend.DataAccess.UnitOfWork.Concrete;
-using MiddleWares;
-using PhoneBook.DataAccess.UnitofWork.Abstract;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,12 +6,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddAutoMapper(typeof(PersonProfile));
-builder.Services.AddHttpClient("Report", httpClient =>
-{
-    httpClient.BaseAddress = new Uri("http://localhost:3300/");
-});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,10 +17,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseMiddleware<ExceptionHandler>();
 
 app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run("http://0.0.0.0:3200");
+app.Run("http://0.0.0.0:3300");

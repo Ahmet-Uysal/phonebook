@@ -10,10 +10,6 @@ namespace PhoneBook.WebApi.Controllers;
 public class CommunicationInformationsController : ControllerBase
 {
     private readonly IUnitOfWork _UnitOfWork;
-
-
-
-
     public CommunicationInformationsController(IUnitOfWork _unitOfWork)
     {
         _UnitOfWork = _unitOfWork;
@@ -23,48 +19,24 @@ public class CommunicationInformationsController : ControllerBase
     [Route("[action]")]
     public async Task<IActionResult> AddCommunicationInfo([FromBody] AddCommunicationInformations entity)
     {
-        try
-        {
-
-            await _UnitOfWork.CommunityInformationRepository.Add(new CommunicationInformations(entity));
-            _UnitOfWork.Complate();
-            return Ok();
-        }
-        catch (Exception ex)
-        {
-            return BadRequest();
-        }
+        await _UnitOfWork.CommunityInformationRepository.Add(new CommunicationInformations(entity));
+        _UnitOfWork.Complate();
+        return Ok();
     }
     [HttpGet]
     [Route("[action]")]
     public async Task<IActionResult> GetAllInfo()
     {
-        try
-        {
-
-            var list = await _UnitOfWork.CommunityInformationRepository.GetAll();
-            return Ok(list);
-        }
-        catch (Exception ex)
-        {
-            return BadRequest();
-        }
+        var list = await _UnitOfWork.CommunityInformationRepository.GetAll();
+        return Ok(list);
     }
     [HttpDelete]
     [Route("[action]/{Id}")]
     public async Task<IActionResult> RemoveCommunicationInfo(string Id)
     {
-        try
-        {
-
-            await _UnitOfWork.CommunityInformationRepository.ChangeStatus(Id);
-            _UnitOfWork.Complate();
-            return Ok();
-        }
-        catch (Exception ex)
-        {
-            return BadRequest();
-        }
+        await _UnitOfWork.CommunityInformationRepository.ChangeStatus(Id);
+        _UnitOfWork.Complate();
+        return Ok();
     }
 
 
