@@ -1,28 +1,30 @@
 using Microsoft.AspNetCore.Mvc;
+using Report.DataAccess.UnitofWork.Abstract;
 
 namespace Report.WebApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("/Report/[controller]")]
 public class ReportController : ControllerBase
 {
 
+    private readonly IUnitOfWork _UnitOfWork;
 
 
-
-    public ReportController()
+    public ReportController(IUnitOfWork UnitOfWork)
     {
+        _UnitOfWork = UnitOfWork;
     }
 
 
     [HttpGet]
     [Route("[action]")]
-    public async Task<IActionResult> CreateReport()
+    public async Task<IActionResult> GetAllReports()
     {
         try
         {
-
-            return Ok("ahmet");
+            var list = await _UnitOfWork.ReportRepository.GetAll();
+            return Ok(list);
         }
         catch (Exception ex)
         {

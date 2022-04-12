@@ -44,6 +44,10 @@ namespace Report.DataAccess.Concrete
         {
             _dbSet.RemoveRange(entities);
         }
+        public async Task Update(TEntity entity)
+        {
+            _dbSet.Update(entity);
+        }
     }
 
 }

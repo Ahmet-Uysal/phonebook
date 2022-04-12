@@ -1,5 +1,4 @@
-using DeliveryBackend.DataAccess.UnitOfWork.Concrete;
-using Report.DataAccess.UnitofWork.Abstract;
+using Report.Kafka;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +8,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
+builder.Services.AddSingleton<IHostedService, KafkaConsumerHandler>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -27,4 +24,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run("http://0.0.0.0:3300");
+app.Run();

@@ -4,7 +4,7 @@ using Report.Worker.Concrete;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-namespace ST_KafkaConsumer.Handlers
+namespace Report.Kafka
 {
     public class KafkaConsumerHandler : IHostedService
     {
@@ -12,6 +12,7 @@ namespace ST_KafkaConsumer.Handlers
         private readonly string topic = "simpletalk_topic";
         public Task StartAsync(CancellationToken cancellationToken)
         {
+
             var conf = new ConsumerConfig
             {
                 GroupId = "st_consumer_group",
@@ -38,7 +39,7 @@ namespace ST_KafkaConsumer.Handlers
                         }
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     builder.Close();
                 }

@@ -8,5 +8,6 @@ namespace Report.DataAccess.Abstract
         Task AddRange(IEnumerable<TEntity> entities);
         Task Remove(string id);
         Task RemoveRange(IEnumerable<TEntity> entities);
+        Task Update(TEntity entity);
     }
 }
