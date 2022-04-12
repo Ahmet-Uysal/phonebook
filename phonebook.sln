@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Report.Entity", "Report.Ent
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kafka.MessageReceiver", "Kafka.MessageReceiver\Kafka.MessageReceiver.csproj", "{66F6F20A-902A-4662-A372-0B4DC329D5EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{07E227B1-1AB8-4D34-A902-34664A58ECEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,5 +66,9 @@ Global
 		{66F6F20A-902A-4662-A372-0B4DC329D5EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66F6F20A-902A-4662-A372-0B4DC329D5EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66F6F20A-902A-4662-A372-0B4DC329D5EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07E227B1-1AB8-4D34-A902-34664A58ECEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07E227B1-1AB8-4D34-A902-34664A58ECEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07E227B1-1AB8-4D34-A902-34664A58ECEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07E227B1-1AB8-4D34-A902-34664A58ECEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

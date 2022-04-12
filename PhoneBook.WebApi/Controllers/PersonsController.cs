@@ -9,7 +9,7 @@ using PhoneBook.Entity.DTO;
 namespace PhoneBook.WebApi.Controllers;
 
 [ApiController]
-[Route("/PhoneBook/[controller]")]
+[Route("/[controller]")]
 public class PersonController : ControllerBase
 {
     private readonly IUnitOfWork _UnitOfWork;
@@ -91,6 +91,23 @@ public class PersonController : ControllerBase
             }
         }
         return null;
+    }
+    [HttpGet]
+    [Route("[action]")]
+    public async Task<IActionResult> GetReports()
+    {
+        var httpClient = _httpClientFactory.CreateClient("Report");
+        var httpResponseMessage = await httpClient.GetAsync(
+            "report/getfirst");
+
+        if (httpResponseMessage.IsSuccessStatusCode)
+        {
+            using var contentStream =
+                 httpResponseMessage.Content.ReadAsStream();
+            return Ok(contentStream);
+        }
+        return BadRequest();
+
     }
 
 }

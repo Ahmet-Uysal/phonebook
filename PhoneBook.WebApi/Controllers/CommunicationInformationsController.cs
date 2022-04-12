@@ -6,7 +6,7 @@ using PhoneBook.Entity.DTO;
 namespace PhoneBook.WebApi.Controllers;
 
 [ApiController]
-[Route("/PhoneBook/[controller]")]
+[Route("/[controller]")]
 public class CommunicationInformationsController : ControllerBase
 {
     private readonly IUnitOfWork _UnitOfWork;

@@ -4,7 +4,7 @@ using Report.DataAccess.UnitofWork.Abstract;
 namespace Report.WebApi.Controllers;
 
 [ApiController]
-[Route("/Report/[controller]")]
+[Route("/[controller]")]
 public class ReportController : ControllerBase
 {
 
@@ -25,6 +25,20 @@ public class ReportController : ControllerBase
         {
             var list = await _UnitOfWork.ReportRepository.GetAll();
             return Ok(list);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest();
+        }
+    }
+    [HttpGet]
+    [Route("[action]")]
+    public async Task<IActionResult> GetFirst()
+    {
+        try
+        {
+            var list = await _UnitOfWork.ReportRepository.GetAll();
+            return Ok(list.FirstOrDefault());
         }
         catch (Exception ex)
         {
