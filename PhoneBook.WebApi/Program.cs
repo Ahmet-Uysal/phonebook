@@ -16,6 +16,7 @@ builder.Services.AddHttpClient("Report", httpClient =>
 {
     httpClient.BaseAddress = new Uri("http://localhost:3300/");
 });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -17,7 +17,7 @@ public class ReportController : ControllerBase
 
     [HttpGet]
     [Route("[action]")]
-    public async Task<IActionResult> GetA()
+    public async Task<IActionResult> CreateReport()
     {
         try
         {
