@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AutoMapper;
+using Confluent.Kafka;
 using Microsoft.AspNetCore.Mvc;
 using PhoneBook.DataAccess.UnitofWork.Abstract;
 using PhoneBook.Entity.Concrete;
@@ -14,7 +15,9 @@ public class PersonController : ControllerBase
     private readonly IUnitOfWork _UnitOfWork;
     private readonly IMapper _mapper;
     private readonly IHttpClientFactory _httpClientFactory;
-
+    private readonly ProducerConfig config = new ProducerConfig
+    { BootstrapServers = "localhost:9092" };
+    private readonly string topic = "simpletalk_topic";
 
 
     public PersonController(IUnitOfWork _unitOfWork, IMapper mapper, IHttpClientFactory httpClientFactory)
@@ -61,15 +64,7 @@ public class PersonController : ControllerBase
     public async Task<IActionResult> GetReport()
     {
 
-        var httpClient = _httpClientFactory.CreateClient("Report");
-        var httpResponseMessage = await httpClient.GetAsync(
-            "report/CreateReports");
-
-        if (httpResponseMessage.IsSuccessStatusCode)
-        {
-            using var contentStream = await httpResponseMessage.Content.ReadAsStreamAsync();
-        }
-        return Ok();
+        return Created(string.Empty, SendToKafka(topic, "CreateReport"));
 
     }
     [HttpGet]
@@ -80,6 +75,22 @@ public class PersonController : ControllerBase
         var mappedList = _mapper.Map<List<DetailedPersonInfoDTO>>(list);
         return Ok(mappedList);
     }
-
+    private Object SendToKafka(string topic, string message)
+    {
+        using (var producer =
+             new ProducerBuilder<Null, string>(config).Build())
+        {
+            try
+            {
+                return producer.ProduceAsync(topic, new Message<Null, string> { Value = message })
+                    .GetAwaiter()
+                    .GetResult();
+            }
+            catch (Exception e)
+            {
+            }
+        }
+        return null;
+    }
 
 }

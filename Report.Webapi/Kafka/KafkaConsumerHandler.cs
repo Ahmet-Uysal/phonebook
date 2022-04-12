@@ -1,5 +1,6 @@
 using Confluent.Kafka;
 using Microsoft.Extensions.Hosting;
+using Report.Worker.Concrete;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ namespace ST_KafkaConsumer.Handlers
 {
     public class KafkaConsumerHandler : IHostedService
     {
+
         private readonly string topic = "simpletalk_topic";
         public Task StartAsync(CancellationToken cancellationToken)
         {
@@ -26,7 +28,14 @@ namespace ST_KafkaConsumer.Handlers
                     while (true)
                     {
                         var consumer = builder.Consume(cancelToken.Token);
-                        Console.WriteLine($"Message: {consumer.Message.Value} received from {consumer.TopicPartitionOffset}");
+                        switch (consumer.Message.Value)
+                        {
+                            case "CreateReport":
+                                System.Console.WriteLine("==>" + consumer.Message.Value);
+                                new ReportCreater().CreateReport();
+                                break;
+                            default: break;
+                        }
                     }
                 }
                 catch (Exception)

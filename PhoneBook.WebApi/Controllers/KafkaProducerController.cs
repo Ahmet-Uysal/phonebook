@@ -14,7 +14,7 @@ namespace Kafka.Producer.API.Controllers
         [Route("[action]")]
         public IActionResult Post([FromBody] string message)
         {
-            return Created(string.Empty, SendToKafka(topic, message));
+            return Ok();
         }
         private Object SendToKafka(string topic, string message)
         {
