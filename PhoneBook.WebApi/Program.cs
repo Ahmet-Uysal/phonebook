@@ -1,4 +1,5 @@
 using DeliveryBackend.DataAccess.UnitOfWork.Concrete;
+using MiddleWares;
 using PhoneBook.DataAccess.UnitofWork.Abstract;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddAutoMapper(typeof(PersonProfile));
+builder.Services.AddHttpClient("Report", httpClient =>
+{
+    httpClient.BaseAddress = new Uri("http://localhost:3300/");
+});
 
 var app = builder.Build();
 
@@ -20,7 +26,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseMiddleware<ExceptionHandler>();
 
 app.UseAuthorization();
 

@@ -32,6 +32,9 @@ namespace PhoneBook.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("IsActive")
+                        .HasColumnType("integer");
+
                     b.Property<string>("PersonsId")
                         .HasColumnType("text");
 
@@ -56,6 +59,9 @@ namespace PhoneBook.DataAccess.Migrations
                     b.Property<string>("Company")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int>("IsActive")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Name")
                         .IsRequired()
