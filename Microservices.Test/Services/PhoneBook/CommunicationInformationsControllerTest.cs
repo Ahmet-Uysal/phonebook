@@ -25,6 +25,7 @@ namespace Microservices.Test
         [Fact]
         public async Task AddCommunicationInfoTest()
         {
+            //PersonId kısmını kendi eklediğiniz kullanıcının ıdsine göre düzenlemeniz gerekmektedir
             var person = new AddCommunicationInformations("Email", "Ahmet@ahmet.com", "7478eb91-da9e-47db-9de5-59dcd777f6a3");
             var content = new StringContent(JsonConvert.SerializeObject(person), Encoding.UTF8, "application/json");
             var response = await Client.PostAsync("/CommunicationInformations/AddCommunicationInfo", content);
