@@ -40,7 +40,7 @@ namespace Microservices.Test
         [Fact]
         public async Task AddPersonTest()
         {
-            var person = new AddPerson( "ali","havelsan","dinç");
+            var person = new AddPerson( "ayse","havelsan","dinç");
             var application = new PhoneBookTestHost();
             var client = application.CreateClient();
             var content = new StringContent(JsonConvert.SerializeObject(person), Encoding.UTF8, "application/json");
@@ -50,19 +50,7 @@ namespace Microservices.Test
             Assert.Equal(true,response.IsSuccessStatusCode);
 
         }
-        [Fact]
-        public async Task AddPersonTestError()
-        {
-            var person = new AddPerson("ali", "havelsan", "dinç");
-            var application = new PhoneBookTestHost();
-            var client = application.CreateClient();
-            var content = new StringContent(JsonConvert.SerializeObject(person), Encoding.UTF8, "application/json");
-
-            var response = await client.PostAsync("/Person/addPerson", content);
-
-            Assert.Equal(true, response.IsSuccessStatusCode);
-
-        }
+      
         [Fact]
         public async Task GetAllPersonsWithCommunicationsInfoTest()
         {

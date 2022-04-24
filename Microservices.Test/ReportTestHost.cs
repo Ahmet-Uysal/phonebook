@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Microservices.Test
 {
    
-        class ReportTestHost : WebApplicationFactory<Program>
+        class ReportTestHost : WebApplicationFactory<ReportProgram>
         {
             protected override IHost CreateHost(IHostBuilder builder)
             {

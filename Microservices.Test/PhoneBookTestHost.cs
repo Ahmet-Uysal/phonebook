@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Microservices.Test
 {
    
-        class PhoneBookTestHost : WebApplicationFactory<Program>
+        class PhoneBookTestHost : WebApplicationFactory<PhoneBookProgram>
         {
             protected override IHost CreateHost(IHostBuilder builder)
             {
