@@ -26,6 +26,7 @@ public class PersonController : ControllerBase
         _UnitOfWork = _unitOfWork;
         _httpClientFactory = httpClientFactory;
     }
+   
 
     [HttpPost]
     [Route("[action]")]
@@ -55,6 +56,7 @@ public class PersonController : ControllerBase
     {
 
         var list = _mapper.Map<List<PersonsDTO>>(await _UnitOfWork.PersonsRepository.GetAll());
+       // var list = await _UnitOfWork.PersonsRepository.GetAll();
         list = list.Where(x => x.IsActive == 1).ToList();
         return Ok(list);
 
@@ -94,7 +96,7 @@ public class PersonController : ControllerBase
     }
     [HttpGet]
     [Route("[action]")]
-    public async Task<IActionResult> GetReports()
+    public async Task<IActionResult> GetFirstReports()
     {
         var httpClient = _httpClientFactory.CreateClient("Report");
         var httpResponseMessage = await httpClient.GetAsync(
@@ -102,9 +104,8 @@ public class PersonController : ControllerBase
 
         if (httpResponseMessage.IsSuccessStatusCode)
         {
-            using var contentStream =
-                 httpResponseMessage.Content.ReadAsStream();
-            return Ok(contentStream);
+            using var contentStream = httpResponseMessage.Content.ReadAsStringAsync();
+            return Ok(contentStream.Result);
         }
         return BadRequest();
 

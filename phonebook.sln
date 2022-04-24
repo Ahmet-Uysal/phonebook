@@ -1,39 +1,34 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.DataAccess", "PhoneBook.DataAccess\PhoneBook.DataAccess.csproj", "{5F1E446C-8636-47B5-884C-EA28B21D4090}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.DataAccess", "PhoneBook.DataAccess\PhoneBook.DataAccess.csproj", "{5F1E446C-8636-47B5-884C-EA28B21D4090}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.Entity", "PhoneBook.Entity\PhoneBook.Entity.csproj", "{F68DFFD9-D630-4D09-9E63-7785926B4354}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Entity", "PhoneBook.Entity\PhoneBook.Entity.csproj", "{F68DFFD9-D630-4D09-9E63-7785926B4354}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.WebApi", "PhoneBook.WebApi\PhoneBook.WebApi.csproj", "{01FD3723-27DD-4BA6-9972-DE11A5844043}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.WebApi", "PhoneBook.WebApi\PhoneBook.WebApi.csproj", "{01FD3723-27DD-4BA6-9972-DE11A5844043}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Report.Webapi", "Report.Webapi\Report.Webapi.csproj", "{D792E4CC-810A-49BD-A8B6-E04BDDE04BBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Report.Webapi", "Report.Webapi\Report.Webapi.csproj", "{D792E4CC-810A-49BD-A8B6-E04BDDE04BBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Report.Worker", "Report.Worker\Report.Worker.csproj", "{CB48FE14-037D-46BB-9831-CDCCEE89B4D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Report.Worker", "Report.Worker\Report.Worker.csproj", "{CB48FE14-037D-46BB-9831-CDCCEE89B4D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Report.DataAccess", "Report.DataAccess\Report.DataAccess.csproj", "{C11CA4CC-AC00-4427-9710-1929FD126A52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Report.DataAccess", "Report.DataAccess\Report.DataAccess.csproj", "{C11CA4CC-AC00-4427-9710-1929FD126A52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Report.Entity", "Report.Entity\Report.Entity.csproj", "{1DF1FDC7-57C7-4B99-8058-5F0F82AF6282}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Report.Entity", "Report.Entity\Report.Entity.csproj", "{1DF1FDC7-57C7-4B99-8058-5F0F82AF6282}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kafka.MessageReceiver", "Kafka.MessageReceiver\Kafka.MessageReceiver.csproj", "{66F6F20A-902A-4662-A372-0B4DC329D5EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kafka.MessageReceiver", "Kafka.MessageReceiver\Kafka.MessageReceiver.csproj", "{66F6F20A-902A-4662-A372-0B4DC329D5EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{07E227B1-1AB8-4D34-A902-34664A58ECEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{07E227B1-1AB8-4D34-A902-34664A58ECEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.Test", "Microservices.Test\Microservices.Test.csproj", "{77409AA3-AEDA-4243-9F65-153E9FC14A0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7278F8AB-5508-44C0-8BBB-6554811BA1CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7278F8AB-5508-44C0-8BBB-6554811BA1CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7278F8AB-5508-44C0-8BBB-6554811BA1CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7278F8AB-5508-44C0-8BBB-6554811BA1CC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5F1E446C-8636-47B5-884C-EA28B21D4090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5F1E446C-8636-47B5-884C-EA28B21D4090}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F1E446C-8636-47B5-884C-EA28B21D4090}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -70,5 +65,15 @@ Global
 		{07E227B1-1AB8-4D34-A902-34664A58ECEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07E227B1-1AB8-4D34-A902-34664A58ECEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07E227B1-1AB8-4D34-A902-34664A58ECEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77409AA3-AEDA-4243-9F65-153E9FC14A0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77409AA3-AEDA-4243-9F65-153E9FC14A0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77409AA3-AEDA-4243-9F65-153E9FC14A0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77409AA3-AEDA-4243-9F65-153E9FC14A0A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DE3FB764-D0FE-495C-9034-98B09423AB59}
 	EndGlobalSection
 EndGlobal

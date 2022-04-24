@@ -4,7 +4,7 @@ using Report.DataAccess.Concrete;
 using Report.DataAccess.DbConnection;
 using Report.DataAccess.UnitofWork.Abstract;
 
-namespace DeliveryBackend.DataAccess.UnitOfWork.Concrete
+namespace Report.DataAccess.UnitOfWork.Concrete
 {
     public class UnitOfWork : IUnitOfWork
     {

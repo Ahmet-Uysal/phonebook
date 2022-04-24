@@ -5,7 +5,7 @@ namespace PhoneBook.DataAccess.DbConnection
 {
     public class PhoneBookDbContext : DbContext
     {
-        public string ConnectionString { get; set; } = @"Server=127.0.0.1;Port=5432;Database=PhoneBook;User Id=postgres;Password=postgres;
+        public string ConnectionString { get; set; } = @"Server=127.0.0.1;Port=5432;Database=PhoneBook;User Id=postgres;Password=123456;
 ";
         public DbSet<Persons> Persons { get; set; }
         public DbSet<CommunicationInformations> CommunicationInformations { get; set; }

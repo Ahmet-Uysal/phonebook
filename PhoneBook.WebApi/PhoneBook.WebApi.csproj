@@ -16,4 +16,7 @@
     <ProjectReference Include="..\PhoneBook.Entity\PhoneBook.Entity.csproj" />
     <ProjectReference Include="..\PhoneBook.DataAccess\PhoneBook.DataAccess.csproj" />
   </ItemGroup>
+	<ItemGroup>
+		<InternalsVisibleTo Include ="Microservices.Test"/>
+	</ItemGroup>
 </Project>
