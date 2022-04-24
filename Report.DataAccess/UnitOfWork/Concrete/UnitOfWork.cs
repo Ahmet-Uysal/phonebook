@@ -2,7 +2,7 @@
 using Report.DataAccess.Abstract;
 using Report.DataAccess.Concrete;
 using Report.DataAccess.DbConnection;
-using Report.DataAccess.UnitofWork.Abstract;
+using Report.DataAccess.UnitOfWork.Abstract;
 
 namespace Report.DataAccess.UnitOfWork.Concrete
 {

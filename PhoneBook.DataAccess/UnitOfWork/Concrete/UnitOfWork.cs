@@ -2,9 +2,9 @@
 using PhoneBook.DataAccess.Abstract;
 using PhoneBook.DataAccess.Concrete;
 using PhoneBook.DataAccess.DbConnection;
-using PhoneBook.DataAccess.UnitofWork.Abstract;
+using PhoneBook.DataAccess.UnitOfWork.Abstract;
 
-namespace DeliveryBackend.DataAccess.UnitOfWork.Concrete
+namespace PhoneBook.DataAccess.UnitOfWork.Concrete
 {
     public class UnitOfWork : IUnitOfWork
     {

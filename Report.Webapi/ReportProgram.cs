@@ -1,5 +1,5 @@
 using Report.DataAccess.UnitOfWork.Concrete;
-using Report.DataAccess.UnitofWork.Abstract;
+using Report.DataAccess.UnitOfWork.Abstract;
 
 var builder = WebApplication.CreateBuilder(args);
 

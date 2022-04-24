@@ -1,5 +1,5 @@
 using Report.DataAccess.Abstract;
-namespace Report.DataAccess.UnitofWork.Abstract
+namespace Report.DataAccess.UnitOfWork.Abstract
 {
     public interface IUnitOfWork : IDisposable
     {

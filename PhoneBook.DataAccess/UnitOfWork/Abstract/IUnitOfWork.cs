@@ -1,5 +1,5 @@
 using PhoneBook.DataAccess.Abstract;
-namespace PhoneBook.DataAccess.UnitofWork.Abstract
+namespace PhoneBook.DataAccess.UnitOfWork.Abstract
 {
     public interface IUnitOfWork : IDisposable
     {

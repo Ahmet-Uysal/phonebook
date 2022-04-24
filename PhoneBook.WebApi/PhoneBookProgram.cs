@@ -1,6 +1,6 @@
-using DeliveryBackend.DataAccess.UnitOfWork.Concrete;
+using PhoneBook.DataAccess.UnitOfWork.Concrete;
 using MiddleWares;
-using PhoneBook.DataAccess.UnitofWork.Abstract;
+using PhoneBook.DataAccess.UnitOfWork.Abstract;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Report.DataAccess.UnitofWork.Abstract;
+using Report.DataAccess.UnitOfWork.Abstract;
 
 namespace Report.WebApi.Controllers;
 

@@ -1,6 +1,6 @@
 using Report.DataAccess.UnitOfWork.Concrete;
 using Report.DataAccess.DbConnection;
-using Report.DataAccess.UnitofWork.Abstract;
+using Report.DataAccess.UnitOfWork.Abstract;
 using Report.Entity.Concrete;
 using Report.Worker.Abstract;
 
